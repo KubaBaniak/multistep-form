@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import FormInput from "../FormInput/FormInput";
-import FormSidebar from "../FormSidebar/FormSidebar";
-import FormStepDescription from "../FormStepDescription/FormStepDescription";
-import FormStepTitle from "../FormStepTitle/FormStepTitle";
-import FormSubmitButton from "../FormSubmitButton/FormSubmitButton";
+import FormInput from "../../FormInput/FormInput";
+import FormSidebar from "../../FormSidebar/FormSidebar";
+import BottomButtonsContainer from "../../BottomButtonContainer/BottomButtonContainer";
+import FormStepMedata from "../../FormStepMetadata/FormStepMetadata";
 
-const description = "Please provide your name, email address, and phone number";
+const title = "Personal info"
+const description = "Please provide your name, email address, and phone number.";
 
 const Container = styled.div`
   display: flex;
@@ -14,8 +14,8 @@ const Container = styled.div`
   align-items: center;
   height: 70vh;
   width: 70%;
-  max-width: 1200px;
-  max-height: 900px;
+  max-width: 1000px;
+  max-height: 700px;
   background-color: hsl(0, 0%, 100%);
   padding: 20px;
   border-radius: 20px;
@@ -26,24 +26,25 @@ const Container = styled.div`
 const FormCointainer = styled.form`
   margin-right: 60px;
   height: 100%;
+  width: 50%;
   display: flex;
   flex-direction: column;
+  gap: 30px;
 `;
 
-export default function FirstFormStep() {
+export default function FormFirstStep() {
   return (
     <Container>
       <FormSidebar />
       <FormCointainer>
-        <FormStepTitle title="Personal info" />
-        <FormStepDescription description={description} />
+        <FormStepMedata title={title} description={description}/>
         <FormInput labelName="Name" placeholder="e.g. Stephen King" />
         <FormInput
           labelName="Email Address"
           placeholder="e.g. stephenking@lorem.com"
         />
         <FormInput labelName="Phone Number" placeholder="e.g. +1 234 567 890" />
-        <FormSubmitButton text="Next Step" />
+        <BottomButtonsContainer hideGoBack={true}/>
       </FormCointainer>
     </Container>
   );
