@@ -15,8 +15,8 @@ const Container = styled.div`
   align-items: center;
   height: 70vh;
   width: 70%;
-  max-width: 1000px;
-  max-height: 700px;
+  max-width: 900px;
+  max-height: 600px;
   background-color: hsl(0, 0%, 100%);
   padding: 20px;
   border-radius: 20px;

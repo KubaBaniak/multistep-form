@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import FormFirstStep from "../components/FormSteps/FormFirstStep/FormFirstStep";
 import FormSecondStep from "../components/FormSteps/FormSecondStep/FormSecondStep";
+import FormThirdStep from "../components/FormSteps/FormThirdStep/FormThirdStep";
 
 
 const Window = styled.div`
@@ -16,6 +17,7 @@ export default function MultistepForm() {
     <Window>
       <FormFirstStep />
       <FormSecondStep />
+      <FormThirdStep />
     </Window>
   );
 }

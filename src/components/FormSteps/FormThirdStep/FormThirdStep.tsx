@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import FormInput from "../../FormInput/FormInput";
 import FormSidebar from "../../FormSidebar/FormSidebar";
 import BottomButtonsContainer from "../../BottomButtonContainer/BottomButtonContainer";
 import FormStepMedata from "../../FormStepMetadata/FormStepMetadata";
+import AddOnsContainer from "../../FormAddOnsContainer/FormAddOnsContainer";
 
-const title = "Personal info"
-const description = "Please provide your name, email address, and phone number.";
+const title = "Pick add-ons"
+const description = "Add-ons help enhance your gaming experience.";
 
 const Container = styled.div`
   display: flex;
@@ -29,21 +29,17 @@ const FormCointainer = styled.form`
   width: 50%;
   display: flex;
   flex-direction: column;
+  gap: 20px;
 `;
 
-export default function FormFirstStep() {
+export default function FormThirdStep() {
   return (
     <Container>
       <FormSidebar />
       <FormCointainer>
-        <FormStepMedata title={title} description={description}/>
-        <FormInput labelName="Name" placeholder="e.g. Stephen King" />
-        <FormInput
-          labelName="Email Address"
-          placeholder="e.g. stephenking@lorem.com"
-        />
-        <FormInput labelName="Phone Number" placeholder="e.g. +1 234 567 890" />
-        <BottomButtonsContainer hideGoBack={true}/>
+        <FormStepMedata title={title} description={description} />
+        <AddOnsContainer />
+        <BottomButtonsContainer/>
       </FormCointainer>
     </Container>
   );
