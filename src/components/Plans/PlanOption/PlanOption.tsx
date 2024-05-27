@@ -16,6 +16,13 @@ const Label = styled.label`
   border-radius: 10px;
   padding: 20px;
   cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+
+  &:hover {
+    border: solid 1px hsl(213, 96%, 18%);
+  }
 `;
 
 const RadioInput = styled.input.attrs<{ $planName: string }>((props) => ({
@@ -83,7 +90,9 @@ export default function PlanOption({
             <RadioContentDataTitle>{planName}</RadioContentDataTitle>
             <RadioContentDataPrice>{price}</RadioContentDataPrice>
             {additionalInfo && (
-              <RadioContentDataAdditionalInfo>{additionalInfo}</RadioContentDataAdditionalInfo>
+              <RadioContentDataAdditionalInfo>
+                {additionalInfo}
+              </RadioContentDataAdditionalInfo>
             )}
           </RadioContentData>
         </RadioContent>
@@ -91,4 +100,3 @@ export default function PlanOption({
     </>
   );
 }
-
