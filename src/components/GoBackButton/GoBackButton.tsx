@@ -15,10 +15,16 @@ const BackButton = styled.input.attrs<{ $text?: string }>((props) => ({
   width: 25%;
 `;
 
-export default function GoBackButton({ text }: { text: string }) {
+export default function GoBackButton({
+  text,
+  prevStep,
+}: {
+  text: string;
+  prevStep: () => void;
+}) {
   return (
     <>
-      <BackButton $text={text} />
+      <BackButton $text={text} onClick={prevStep} />
     </>
   );
 }

@@ -1,6 +1,9 @@
+import { UseFormRegister } from "react-hook-form";
 import styled from "styled-components";
+import { FormInputs } from "../../dto/form";
 
 interface AddOnProps {
+  register: UseFormRegister<FormInputs>;
   active: boolean;
   title: string;
   description: string;
@@ -25,6 +28,10 @@ const AddOnContainer = styled.label<{ $active?: boolean }>`
       background-color: hsl(217, 100%, 97%);
       border: solid 1px hsl(213, 96%, 18%);
   `};
+
+  &:hover {
+    border: solid 1px hsl(213, 96%, 18%);
+  }
 `;
 
 const CheckboxWrapper = styled.label`
@@ -95,6 +102,7 @@ const AddOnPrice = styled.div`
 `;
 
 export default function AddOn({
+  register,
   title,
   description,
   price,
@@ -104,7 +112,11 @@ export default function AddOn({
   return (
     <AddOnContainer $active={active}>
       <CheckboxWrapper htmlFor={"plan-" + title}>
-        <Checkbox id={"plan-" + title} onChange={handleCheckboxSelect} />
+        <Checkbox
+          {...register("addOns")}
+          id={"plan-" + title}
+          onChange={handleCheckboxSelect}
+        />
         <CheckboxContainer />
       </CheckboxWrapper>
       <AddOnMetaData>

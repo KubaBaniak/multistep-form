@@ -1,4 +1,6 @@
+import { UseFormRegister } from "react-hook-form";
 import styled from "styled-components";
+import { FormInputs } from "../../dto/form";
 
 const Label = styled.label`
   color: hsl(213, 96%, 18%);
@@ -25,13 +27,20 @@ const InputGroup = styled.div`
 interface FormInputProps {
   labelName: string;
   placeholder: string;
+  formRegisterValue: keyof FormInputs;
+  register: UseFormRegister<FormInputs>;
 }
 
-export default function FormInput({ labelName, placeholder }: FormInputProps) {
+export default function FormInput({
+  labelName,
+  placeholder,
+  formRegisterValue,
+  register,
+}: FormInputProps) {
   return (
     <InputGroup>
       <Label>{labelName}</Label>
-      <Input placeholder={placeholder} />
+      <Input {...register(formRegisterValue)} placeholder={placeholder} />
     </InputGroup>
   );
 }

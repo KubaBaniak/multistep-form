@@ -3,17 +3,19 @@ import FormSidebar from "../../FormSidebar/FormSidebar";
 import BottomButtonsContainer from "../../BottomButtonContainer/BottomButtonContainer";
 import FormStepMedata from "../../FormStepMetadata/FormStepMetadata";
 import AddOnsContainer from "../../FormAddOnsContainer/FormAddOnsContainer";
+import { UseFormRegister } from "react-hook-form";
+import { FormInputs } from "../../../dto/form";
 
 const title = "Pick add-ons";
 const description = "Add-ons help enhance your gaming experience.";
 
-const Container = styled.div`
-  display: flex;
+const Container = styled.div<{ $active: number }>`
+  display: ${({ $active }) => ($active === 3 ? "flex" : "none")};
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   height: 70vh;
-  width: 70%;
+  width: 100%;
   max-width: 900px;
   max-height: 600px;
   background-color: hsl(0, 0%, 100%);
@@ -23,8 +25,7 @@ const Container = styled.div`
   gap: 20px;
 `;
 
-const Content = styled.form`
-  margin-right: 60px;
+const Content = styled.div`
   height: 100%;
   width: 50%;
   display: flex;
@@ -32,14 +33,26 @@ const Content = styled.form`
   gap: 20px;
 `;
 
-export default function FormThirdStep() {
+interface FormThirdStepProps {
+  register: UseFormRegister<FormInputs>;
+  nextStep: () => void;
+  prevStep: () => void;
+  active: number;
+}
+
+export default function FormThirdStep({
+  register,
+  nextStep,
+  prevStep,
+  active,
+}: FormThirdStepProps) {
   return (
-    <Container>
-      <FormSidebar />
+    <Container $active={active}>
+      <FormSidebar currentStep={active} />
       <Content>
         <FormStepMedata title={title} description={description} />
-        <AddOnsContainer />
-        <BottomButtonsContainer />
+        <AddOnsContainer register={register} />
+        <BottomButtonsContainer nextStep={nextStep} prevStep={prevStep} />
       </Content>
     </Container>
   );

@@ -1,10 +1,13 @@
+import { UseFormRegister } from "react-hook-form";
 import styled from "styled-components";
+import { FormInputs } from "../../../dto/form";
 
 interface PlanOptionProps {
   planIcon: string;
   planName: string;
   price: string;
   additionalInfo?: string;
+  register: UseFormRegister<FormInputs>;
 }
 
 const Label = styled.label`
@@ -77,12 +80,13 @@ export default function PlanOption({
   planName,
   price,
   additionalInfo,
+  register,
 }: PlanOptionProps) {
   const id = `plan-${planName.replace(/\s+/g, "-").toLowerCase()}`;
 
   return (
     <>
-      <RadioInput id={id} $planName={planName} />
+      <RadioInput {...register("plan")} id={id} $planName={planName} />
       <Label htmlFor={id}>
         <RadioContent>
           <RadioContentIcon $planicon={planIcon} />

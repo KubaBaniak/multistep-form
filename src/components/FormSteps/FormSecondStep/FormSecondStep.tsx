@@ -4,17 +4,19 @@ import PlansContainer from "../../Plans/PlansContainer/PlansContainer";
 import FormToggleButton from "../../FormToggleButton/FormToggleButton";
 import BottomButtonsContainer from "../../BottomButtonContainer/BottomButtonContainer";
 import FormStepMedata from "../../FormStepMetadata/FormStepMetadata";
+import { FormInputs } from "../../../dto/form";
+import { UseFormRegister } from "react-hook-form";
 
 const title = "Select your plan";
 const description = "You have the option of monthly or yearly billing.";
 
-const Container = styled.div`
-  display: flex;
+const Container = styled.div<{ $active: number }>`
+  display: ${({ $active }) => ($active === 2 ? "flex" : "none")};
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   height: 70vh;
-  width: 70%;
+  width: 100%;
   max-width: 900px;
   max-height: 600px;
   background-color: hsl(0, 0%, 100%);
@@ -24,8 +26,7 @@ const Container = styled.div`
   gap: 20px;
 `;
 
-const Content = styled.form`
-  margin-right: 60px;
+const Content = styled.div`
   height: 100%;
   width: 50%;
   display: flex;
@@ -33,15 +34,27 @@ const Content = styled.form`
   gap: 20px;
 `;
 
-export default function FormSecondStep() {
+interface FormSecondStepProps {
+  register: UseFormRegister<FormInputs>;
+  nextStep: () => void;
+  prevStep: () => void;
+  active: number;
+}
+
+export default function FormSecondStep({
+  register,
+  nextStep,
+  prevStep,
+  active,
+}: FormSecondStepProps) {
   return (
-    <Container>
-      <FormSidebar />
+    <Container $active={active}>
+      <FormSidebar currentStep={active}/>
       <Content>
         <FormStepMedata title={title} description={description} />
-        <PlansContainer />
+        <PlansContainer register={register} />
         <FormToggleButton />
-        <BottomButtonsContainer />
+        <BottomButtonsContainer nextStep={nextStep} prevStep={prevStep} />
       </Content>
     </Container>
   );

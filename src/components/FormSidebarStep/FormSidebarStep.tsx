@@ -9,10 +9,17 @@ const StepContainer = styled.div`
   gap: 20px;
 `;
 
-const StepNumber = styled.div`
+const StepNumber = styled.div<{ $currentStep: number; $stepNumber: number }>`
+  ${({ $currentStep, $stepNumber }) =>
+    $currentStep === $stepNumber &&
+    `
+    color: hsl(213, 96%, 18%);
+    background-color: hsl(206, 94%, 87%);
+    font-weight: 700;
+  `};
   width: 30px;
   height: 30px;
-  border: solid 1px hsl(0, 0%, 100%);
+  border: solid 1px hsl(206, 94%, 87%);
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -42,14 +49,18 @@ const StepDescription = styled.p`
 
 export default function FormSidebarStep({
   stepNumber,
+  currentStep,
   stepDescription,
 }: {
   stepNumber: number;
+  currentStep: number;
   stepDescription: string;
 }) {
   return (
     <StepContainer>
-      <StepNumber>{stepNumber}</StepNumber>
+      <StepNumber $currentStep={currentStep} $stepNumber={stepNumber}>
+        {stepNumber}
+      </StepNumber>
       <StepDescriptionContainer>
         <StepName>Step {stepNumber}</StepName>
         <StepDescription>{stepDescription}</StepDescription>
