@@ -4,7 +4,7 @@ import BottomButtonsContainer from "../../BottomButtonContainer/BottomButtonCont
 import FormStepMedata from "../../FormStepMetadata/FormStepMetadata";
 import AddOnsContainer from "../../FormAddOnsContainer/FormAddOnsContainer";
 
-const title = "Pick add-ons"
+const title = "Pick add-ons";
 const description = "Add-ons help enhance your gaming experience.";
 
 const Container = styled.div`
@@ -23,7 +23,7 @@ const Container = styled.div`
   gap: 20px;
 `;
 
-const FormCointainer = styled.form`
+const Content = styled.form`
   margin-right: 60px;
   height: 100%;
   width: 50%;
@@ -36,11 +36,11 @@ export default function FormThirdStep() {
   return (
     <Container>
       <FormSidebar />
-      <FormCointainer>
+      <Content>
         <FormStepMedata title={title} description={description} />
         <AddOnsContainer />
-        <BottomButtonsContainer/>
-      </FormCointainer>
+        <BottomButtonsContainer />
+      </Content>
     </Container>
   );
 }

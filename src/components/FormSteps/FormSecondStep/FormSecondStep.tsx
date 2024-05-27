@@ -5,7 +5,7 @@ import FormToggleButton from "../../FormToggleButton/FormToggleButton";
 import BottomButtonsContainer from "../../BottomButtonContainer/BottomButtonContainer";
 import FormStepMedata from "../../FormStepMetadata/FormStepMetadata";
 
-const title = "Select your plan"
+const title = "Select your plan";
 const description = "You have the option of monthly or yearly billing.";
 
 const Container = styled.div`
@@ -24,7 +24,7 @@ const Container = styled.div`
   gap: 20px;
 `;
 
-const FormCointainer = styled.form`
+const Content = styled.form`
   margin-right: 60px;
   height: 100%;
   width: 50%;
@@ -37,12 +37,12 @@ export default function FormSecondStep() {
   return (
     <Container>
       <FormSidebar />
-      <FormCointainer>
+      <Content>
         <FormStepMedata title={title} description={description} />
         <PlansContainer />
         <FormToggleButton />
-        <BottomButtonsContainer/>
-      </FormCointainer>
+        <BottomButtonsContainer />
+      </Content>
     </Container>
   );
 }
