@@ -3,7 +3,7 @@ import FormSidebar from "../../FormSidebar/FormSidebar";
 import BottomButtonsContainer from "../../BottomButtonContainer/BottomButtonContainer";
 import FormStepMedata from "../../FormStepMetadata/FormStepMetadata";
 import AddOnsContainer from "../../FormAddOnsContainer/FormAddOnsContainer";
-import { UseFormRegister } from "react-hook-form";
+import { UseFormRegister, UseFormSetValue } from "react-hook-form";
 import { FormInputs } from "../../../dto/form";
 
 const title = "Pick add-ons";
@@ -35,6 +35,7 @@ const Content = styled.div`
 
 interface FormThirdStepProps {
   register: UseFormRegister<FormInputs>;
+  setValue: UseFormSetValue<FormInputs>;
   nextStep: () => void;
   prevStep: () => void;
   active: number;
@@ -42,6 +43,7 @@ interface FormThirdStepProps {
 
 export default function FormThirdStep({
   register,
+  setValue,
   nextStep,
   prevStep,
   active,
@@ -51,7 +53,7 @@ export default function FormThirdStep({
       <FormSidebar currentStep={active} />
       <Content>
         <FormStepMedata title={title} description={description} />
-        <AddOnsContainer register={register} />
+        <AddOnsContainer register={register} setValue={setValue} />
         <BottomButtonsContainer nextStep={nextStep} prevStep={prevStep} />
       </Content>
     </Container>

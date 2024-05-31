@@ -20,12 +20,12 @@ export default function MultistepForm() {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm<FormInputs>();
 
   const [formStep, setFormStep] = useState(1);
 
-  console.log(formStep);
   const onSubmit: SubmitHandler<FormInputs> = (data) => console.log(data);
   return (
     <Window>
@@ -44,6 +44,7 @@ export default function MultistepForm() {
         <FormThirdStep
           active={formStep}
           register={register}
+          setValue={setValue}
           nextStep={() => setFormStep((prevState) => prevState + 1)}
           prevStep={() => setFormStep((prevState) => prevState - 1)}
         />

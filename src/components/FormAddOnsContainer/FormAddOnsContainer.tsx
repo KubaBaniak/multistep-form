@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import AddOn from "./FormAddOn";
 import { useState } from "react";
-import { UseFormRegister } from "react-hook-form";
+import { UseFormRegister, UseFormSetValue } from "react-hook-form";
 import { FormInputs } from "../../dto/form";
 
 const addOns = [
@@ -32,17 +32,30 @@ const AddOnsSection = styled.ul`
 
 export default function AddOnsContainer({
   register,
+  setValue,
 }: {
   register: UseFormRegister<FormInputs>;
+  setValue: UseFormSetValue<FormInputs>;
 }) {
   const [selectedAddOns, setSelectedAddOns] = useState<number[]>([]);
 
   const handleCheckboxSelect = (item: number) => {
     setSelectedAddOns((prevState) => {
-      if (prevState.includes(item)) {
-        return prevState.filter((i) => i !== item);
-      }
-      return [...prevState, item];
+      const isSelected = prevState.includes(item);
+      const updated = isSelected
+        ? prevState.filter((i) => i !== item)
+        : [...prevState, item];
+
+      const addOnsData = updated.map((index) => {
+        const addOn = addOns[index];
+        return {
+          addOnName: addOn.title,
+          addOnPrice: addOn.price,
+        };
+      });
+
+      setValue("addOns", addOnsData);
+      return updated;
     });
   };
 

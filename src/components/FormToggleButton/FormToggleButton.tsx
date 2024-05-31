@@ -1,5 +1,7 @@
 import { ChangeEvent, useState } from "react";
 import styled from "styled-components";
+import { FormInputs } from "../../dto/form";
+import { UseFormRegister } from "react-hook-form";
 
 const Label = styled.label`
   display: flex;
@@ -45,24 +47,34 @@ const Input = styled.input`
   }
 `;
 
-const PlanType = styled.span<{$yearlyActive: boolean}>`
+const PlanType = styled.span<{ $yearlyActive: boolean }>`
   transition: 300ms all;
-  color: ${props => props.$yearlyActive ? 'hsl(213, 96%, 18%)' : 'hsl(231, 11%, 63%)'};
+  color: ${(props) =>
+    props.$yearlyActive ? "hsl(213, 96%, 18%)" : "hsl(231, 11%, 63%)"};
   font-weight: 600;
 `;
 
-export default function FormToggleButton() {
+export default function FormToggleButton({
+  register,
+}: {
+  register: UseFormRegister<FormInputs>;
+}) {
   const [checked, setChecked] = useState(false);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => setChecked(e.target.checked);
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
+    setChecked(e.target.checked);
 
   return (
     <Label>
       <PlanType $yearlyActive={!checked}>Monthly</PlanType>
-      <Input checked={checked} type="checkbox" onChange={handleChange} />
+      <Input
+        {...register("yearlyBilling")}
+        checked={checked}
+        type="checkbox"
+        onChange={handleChange}
+      />
       <Switch />
       <PlanType $yearlyActive={checked}>Yearly</PlanType>
     </Label>
   );
 }
-

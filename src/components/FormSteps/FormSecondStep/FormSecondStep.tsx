@@ -49,11 +49,11 @@ export default function FormSecondStep({
 }: FormSecondStepProps) {
   return (
     <Container $active={active}>
-      <FormSidebar currentStep={active}/>
+      <FormSidebar currentStep={active} />
       <Content>
         <FormStepMedata title={title} description={description} />
         <PlansContainer register={register} />
-        <FormToggleButton />
+        <FormToggleButton register={register} />
         <BottomButtonsContainer nextStep={nextStep} prevStep={prevStep} />
       </Content>
     </Container>

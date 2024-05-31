@@ -1,24 +1,13 @@
-type Plan = {
-  planName: "Arcade" | "Advanced" | "Pro";
-};
-
 type AddOn = {
   addOnName: string;
   addOnPrice: string;
 };
 
-type FirstStep = {
+export type FormInputs = {
   name: string;
   email: string;
   phoneNumber: string;
-};
-
-type SecondStep = {
-  plan: Plan;
-};
-
-type ThirdStep = {
+  planName: "Arcade" | "Advanced" | "Pro";
+  yearlyBilling: boolean;
   addOns: AddOn[];
 };
-
-export type FormInputs = FirstStep & SecondStep & ThirdStep;

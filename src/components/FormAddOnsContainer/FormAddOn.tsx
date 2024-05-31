@@ -8,7 +8,7 @@ interface AddOnProps {
   title: string;
   description: string;
   price: string;
-  handleCheckboxSelect: () => void;
+  handleCheckboxSelect: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const AddOnContainer = styled.label<{ $active?: boolean }>`

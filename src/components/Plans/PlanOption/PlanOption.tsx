@@ -86,7 +86,11 @@ export default function PlanOption({
 
   return (
     <>
-      <RadioInput {...register("plan")} id={id} $planName={planName} />
+      <RadioInput
+        {...register("planName", { required: true })}
+        id={id}
+        $planName={planName}
+      />
       <Label htmlFor={id}>
         <RadioContent>
           <RadioContentIcon $planicon={planIcon} />
