@@ -16,6 +16,7 @@ const SidebarContainer = styled.div`
   flex-direction: column;
   gap: 30px;
   border-radius: 10px;
+  align-self: flex-start;
 `;
 export default function FormSidebar({ currentStep }: { currentStep: number }) {
   return (

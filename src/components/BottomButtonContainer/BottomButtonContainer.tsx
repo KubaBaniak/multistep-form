@@ -12,17 +12,20 @@ const ButtonContainer = styled.div`
 export default function BottomButtonsContainer({
   nextStep,
   prevStep,
+  nextStepText,
 }: {
   nextStep?: () => void;
   prevStep?: () => void;
+  nextStepText?: string;
 }) {
+  const buttonText = nextStepText ? nextStepText : "Next Step";
   return (
     <ButtonContainer>
       {prevStep && <GoBackButton text="Go Back" prevStep={prevStep} />}
       {nextStep ? (
-        <GoNextButton text="Next Step" nextStep={nextStep} />
+        <GoNextButton text={buttonText} nextStep={nextStep} />
       ) : (
-        <FormSubmitButton text="Next Step" />
+        <FormSubmitButton text={buttonText} />
       )}
     </ButtonContainer>
   );

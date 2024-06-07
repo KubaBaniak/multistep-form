@@ -3,10 +3,14 @@ import PlanOption from "../PlanOption/PlanOption";
 import arcadeIcon from "../../../assets/images/icon-arcade.svg";
 import advancedIcon from "../../../assets/images/icon-advanced.svg";
 import proIcon from "../../../assets/images/icon-pro.svg";
-import { FormInputs } from "../../../dto/form";
-import { UseFormRegister } from "react-hook-form";
 
-const plans = [
+type PlanContent = {
+  planIcon: string;
+  planName: "Arcade" | "Advanced" | "Pro";
+  price: string;
+};
+
+const plans: PlanContent[] = [
   { planIcon: arcadeIcon, planName: "Arcade", price: "$90/mo" },
   { planIcon: advancedIcon, planName: "Advanced", price: "$120/mo" },
   { planIcon: proIcon, planName: "Pro", price: "$150/mo" },
@@ -23,17 +27,12 @@ const PlanElement = styled.li`
   width: 31%;
 `;
 
-export default function PlansContainer({
-  register,
-}: {
-  register: UseFormRegister<FormInputs>;
-}) {
+export default function PlansContainer() {
   return (
     <PlanList>
       {plans.map((plan) => (
         <PlanElement key={"key-" + plan.planName}>
           <PlanOption
-            register={register}
             planIcon={plan.planIcon}
             planName={plan.planName}
             price={plan.price}

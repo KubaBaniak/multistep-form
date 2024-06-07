@@ -2,9 +2,10 @@ import styled from "styled-components";
 import FormFirstStep from "../components/FormSteps/FormFirstStep/FormFirstStep";
 import FormSecondStep from "../components/FormSteps/FormSecondStep/FormSecondStep";
 import FormThirdStep from "../components/FormSteps/FormThirdStep/FormThirdStep";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
 import { FormInputs } from "../dto/form";
 import { useState } from "react";
+import FormFourthStep from "../components/FormSteps/FormFourthStep/FormFourthStep";
 
 const Window = styled.div`
   display: flex;
@@ -17,38 +18,36 @@ const Window = styled.div`
 `;
 
 export default function MultistepForm() {
-  const {
-    register,
-    handleSubmit,
-    setValue,
-    formState: { errors },
-  } = useForm<FormInputs>();
+  const methods = useForm<FormInputs>();
 
   const [formStep, setFormStep] = useState(1);
 
   const onSubmit: SubmitHandler<FormInputs> = (data) => console.log(data);
   return (
     <Window>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <FormFirstStep
-          active={formStep}
-          register={register}
-          nextStep={() => setFormStep((prevState) => prevState + 1)}
-        />
-        <FormSecondStep
-          active={formStep}
-          register={register}
-          nextStep={() => setFormStep((prevState) => prevState + 1)}
-          prevStep={() => setFormStep((prevState) => prevState - 1)}
-        />
-        <FormThirdStep
-          active={formStep}
-          register={register}
-          setValue={setValue}
-          nextStep={() => setFormStep((prevState) => prevState + 1)}
-          prevStep={() => setFormStep((prevState) => prevState - 1)}
-        />
-      </form>
+      <FormProvider {...methods}>
+        <form onSubmit={methods.handleSubmit(onSubmit)}>
+          <FormFirstStep
+            active={formStep}
+            nextStep={() => setFormStep((prevState) => prevState + 1)}
+          />
+          <FormSecondStep
+            active={formStep}
+            nextStep={() => setFormStep((prevState) => prevState + 1)}
+            prevStep={() => setFormStep((prevState) => prevState - 1)}
+          />
+          <FormThirdStep
+            active={formStep}
+            nextStep={() => setFormStep((prevState) => prevState + 1)}
+            prevStep={() => setFormStep((prevState) => prevState - 1)}
+          />
+          <FormFourthStep
+            active={formStep}
+            nextStep={() => setFormStep((prevState) => prevState + 1)}
+            prevStep={() => setFormStep((prevState) => prevState - 1)}
+          />
+        </form>
+      </FormProvider>
     </Window>
   );
 }

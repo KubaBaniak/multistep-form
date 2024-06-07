@@ -1,7 +1,7 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import styled from "styled-components";
 import { FormInputs } from "../../dto/form";
-import { UseFormRegister } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 
 const Label = styled.label`
   display: flex;
@@ -36,7 +36,10 @@ const Switch = styled.div`
   }
 `;
 
-const Input = styled.input`
+const HiddenInput = styled.input.attrs({
+  type: "checkbox",
+  name: "billing",
+})`
   opacity: 0;
   position: absolute;
   display: none;
@@ -54,23 +57,25 @@ const PlanType = styled.span<{ $yearlyActive: boolean }>`
   font-weight: 600;
 `;
 
-export default function FormToggleButton({
-  register,
-}: {
-  register: UseFormRegister<FormInputs>;
-}) {
+export default function FormToggleButton() {
   const [checked, setChecked] = useState(false);
+  const { setValue, register } = useFormContext<FormInputs>();
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setChecked(e.target.checked);
+    setValue("plan.billing", e.target.checked ? "yearly" : "monthly");
+  };
+
+  useEffect(() => {
+    setValue("plan.billing", "monthly");
+  }, [setValue]);
 
   return (
     <Label>
       <PlanType $yearlyActive={!checked}>Monthly</PlanType>
-      <Input
-        {...register("yearlyBilling")}
+      <HiddenInput
+        {...register("plan.billing")}
         checked={checked}
-        type="checkbox"
         onChange={handleChange}
       />
       <Switch />

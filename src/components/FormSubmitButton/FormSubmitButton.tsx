@@ -15,7 +15,7 @@ const SubmitButton = styled.input.attrs<{ $text?: string }>((props) => ({
   width: 25%;
 `;
 
-export default function FormSubmitButton({ text }: { text: string }) {
+export default function FormSubmitButton({ text }: { text?: string }) {
   return (
     <>
       <SubmitButton $text={text} />

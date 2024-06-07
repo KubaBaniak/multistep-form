@@ -4,8 +4,6 @@ import PlansContainer from "../../Plans/PlansContainer/PlansContainer";
 import FormToggleButton from "../../FormToggleButton/FormToggleButton";
 import BottomButtonsContainer from "../../BottomButtonContainer/BottomButtonContainer";
 import FormStepMedata from "../../FormStepMetadata/FormStepMetadata";
-import { FormInputs } from "../../../dto/form";
-import { UseFormRegister } from "react-hook-form";
 
 const title = "Select your plan";
 const description = "You have the option of monthly or yearly billing.";
@@ -31,18 +29,17 @@ const Content = styled.div`
   width: 50%;
   display: flex;
   flex-direction: column;
+  margin: auto;
   gap: 20px;
 `;
 
 interface FormSecondStepProps {
-  register: UseFormRegister<FormInputs>;
   nextStep: () => void;
   prevStep: () => void;
   active: number;
 }
 
 export default function FormSecondStep({
-  register,
   nextStep,
   prevStep,
   active,
@@ -52,8 +49,8 @@ export default function FormSecondStep({
       <FormSidebar currentStep={active} />
       <Content>
         <FormStepMedata title={title} description={description} />
-        <PlansContainer register={register} />
-        <FormToggleButton register={register} />
+        <PlansContainer />
+        <FormToggleButton />
         <BottomButtonsContainer nextStep={nextStep} prevStep={prevStep} />
       </Content>
     </Container>

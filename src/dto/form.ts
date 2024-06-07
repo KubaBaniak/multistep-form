@@ -1,13 +1,18 @@
-type AddOn = {
+export type AddOn = {
   addOnName: string;
   addOnPrice: string;
+};
+
+export type Plan = {
+  planName: "Arcade" | "Advanced" | "Pro";
+  planPrice: string;
+  billing: "yearly" | "monthly";
 };
 
 export type FormInputs = {
   name: string;
   email: string;
   phoneNumber: string;
-  planName: "Arcade" | "Advanced" | "Pro";
-  yearlyBilling: boolean;
+  plan: Plan;
   addOns: AddOn[];
 };

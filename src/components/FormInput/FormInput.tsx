@@ -1,4 +1,4 @@
-import { UseFormRegister } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 import styled from "styled-components";
 import { FormInputs } from "../../dto/form";
 
@@ -28,15 +28,15 @@ interface FormInputProps {
   labelName: string;
   placeholder: string;
   formRegisterValue: keyof FormInputs;
-  register: UseFormRegister<FormInputs>;
 }
 
 export default function FormInput({
   labelName,
   placeholder,
   formRegisterValue,
-  register,
 }: FormInputProps) {
+  const { register } = useFormContext<FormInputs>();
+
   return (
     <InputGroup>
       <Label>{labelName}</Label>

@@ -1,13 +1,13 @@
-import { UseFormRegister } from "react-hook-form";
+import { useEffect } from "react";
 import styled from "styled-components";
 import { FormInputs } from "../../../dto/form";
+import { useFormContext } from "react-hook-form";
 
 interface PlanOptionProps {
   planIcon: string;
-  planName: string;
+  planName: "Arcade" | "Advanced" | "Pro";
   price: string;
   additionalInfo?: string;
-  register: UseFormRegister<FormInputs>;
 }
 
 const Label = styled.label`
@@ -30,7 +30,7 @@ const Label = styled.label`
 
 const RadioInput = styled.input.attrs<{ $planName: string }>((props) => ({
   type: "radio",
-  name: "plan",
+  name: "plan.planName",
   value: props.$planName,
 }))`
   display: none;
@@ -80,14 +80,22 @@ export default function PlanOption({
   planName,
   price,
   additionalInfo,
-  register,
 }: PlanOptionProps) {
   const id = `plan-${planName.replace(/\s+/g, "-").toLowerCase()}`;
+  const { register, setValue, watch } = useFormContext<FormInputs>();
+
+  const selectedPlanName = watch("plan.planName");
+
+  useEffect(() => {
+    if (selectedPlanName === planName) {
+      setValue("plan.planPrice", price);
+    }
+  }, [selectedPlanName, planName, price, setValue]);
 
   return (
     <>
       <RadioInput
-        {...register("planName", { required: true })}
+        {...register("plan.planName", { required: true })}
         id={id}
         $planName={planName}
       />
