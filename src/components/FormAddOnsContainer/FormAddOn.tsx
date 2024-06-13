@@ -8,7 +8,7 @@ interface AddOnProps {
   title: string;
   description: string;
   price: string;
-  handleCheckboxSelect: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleCheckboxSelect: () => void;
 }
 
 const AddOnContainer = styled.label<{ $active?: boolean }>`
@@ -28,10 +28,6 @@ const AddOnContainer = styled.label<{ $active?: boolean }>`
       background-color: hsl(217, 100%, 97%);
       border: solid 1px hsl(213, 96%, 18%);
   `};
-
-  &:hover {
-    border: solid 1px hsl(213, 96%, 18%);
-  }
 `;
 
 const CheckboxWrapper = styled.label`

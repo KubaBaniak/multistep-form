@@ -15,7 +15,7 @@ const Container = styled.div<{ $active: number }>`
   align-items: center;
   height: 70vh;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1000px;
   max-height: 600px;
   background-color: hsl(0, 0%, 100%);
   padding: 20px;
