@@ -16,7 +16,8 @@ const ButtonContainer = styled.div`
     width: 100%;
     height: 10%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     background: white;
   }

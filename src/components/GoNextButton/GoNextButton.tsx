@@ -12,7 +12,7 @@ const NextButton = styled.button`
   border: none;
   border-radius: 8px;
   padding: 15px 20px;
-  margin: auto;
+  margin: 10px 0 0 auto;
   width: auto;
 
   &:disabled {
@@ -21,7 +21,7 @@ const NextButton = styled.button`
   }
 
   @media only screen and (max-width: 768px) {
-    margin-right: 20px;
+    margin: auto 20px auto auto;
   }
 `;
 

@@ -23,7 +23,6 @@ const Container = styled.div<{ $active: number }>`
 `;
 
 const Content = styled.div`
-  height: 100%;
   width: 50%;
   display: flex;
   margin: auto;
@@ -35,10 +34,10 @@ const Content = styled.div`
 
   @media only screen and (max-width: 768px) {
     width: 90%;
-    height: 100%;
     position: relative;
     margin: 0;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 5px;
     flex-grow: 1;
   }
 `;

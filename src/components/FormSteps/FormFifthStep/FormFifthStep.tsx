@@ -12,10 +12,7 @@ const Container = styled.div<{ $active: number }>`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 70vh;
-  width: 100%;
-  max-width: 1000px;
-  max-height: 600px;
+  width: 80%;
   background-color: hsl(0, 0%, 100%);
   padding: 20px;
   border-radius: 20px;
@@ -24,8 +21,6 @@ const Container = styled.div<{ $active: number }>`
 `;
 
 const Content = styled.div`
-  height: 100%;
-  width: 50%;
   display: flex;
   margin: auto;
   flex-direction: column;

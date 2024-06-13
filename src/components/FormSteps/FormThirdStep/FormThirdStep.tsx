@@ -12,15 +12,10 @@ const Container = styled.div<{ $active: number }>`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 70vh;
   width: 100%;
-  max-width: 1000px;
-  max-height: 600px;
   background-color: hsl(0, 0%, 100%);
-  padding: 20px;
   border-radius: 20px;
   box-shadow: hsl(229, 24%, 87%) 0 8px 24px;
-  gap: 20px;
 `;
 
 const Content = styled.div`
@@ -29,7 +24,19 @@ const Content = styled.div`
   display: flex;
   margin: auto;
   flex-direction: column;
-  gap: 20px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  gap: 0;
+
+  @media only screen and (max-width: 768px) {
+    height: 100%;
+    position: relative;
+    margin: 0;
+    justify-content: flex-start;
+    gap: 5px;
+    flex-grow: 1;
+  }
 `;
 
 interface FormThirdStepProps {
