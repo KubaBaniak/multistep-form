@@ -12,12 +12,16 @@ const NextButton = styled.button`
   border: none;
   border-radius: 8px;
   padding: 15px 20px;
-  margin: auto 0 20px auto;
+  margin: auto;
   width: auto;
 
   &:disabled {
     cursor: not-allowed;
     background-color: hsl(213, 96%, 50%);
+  }
+
+  @media only screen and (max-width: 768px) {
+    margin-right: 20px;
   }
 `;
 

@@ -21,19 +21,28 @@ const Container = styled.div<{ $active: number }>`
   max-width: 1000px;
   max-height: 600px;
   background-color: hsl(0, 0%, 100%);
-  padding: 20px;
   border-radius: 20px;
   box-shadow: hsl(229, 24%, 87%) 0 8px 24px;
-  gap: 20px;
 `;
 
 const Content = styled.div`
   height: 100%;
   width: 50%;
   display: flex;
-  flex-direction: column;
   margin: auto;
-  gap: 20px;
+  flex-direction: column;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  gap: 0;
+
+  @media only screen and (max-width: 768px) {
+    height: 100%;
+    position: relative;
+    margin: 0;
+    justify-content: space-between;
+    flex-grow: 1;
+  }
 `;
 
 interface FormSecondStepProps {

@@ -17,6 +17,19 @@ const SidebarContainer = styled.div`
   gap: 30px;
   border-radius: 10px;
   align-self: flex-start;
+
+  @media only screen and (max-width: 768px) {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 100%;
+    height: 25%;
+    border-radius: 0;
+    flex-direction: row;
+    justify-content: center;
+    background-position: 50% 80%;
+  }
 `;
 export default function FormSidebar({ currentStep }: { currentStep: number }) {
   return (

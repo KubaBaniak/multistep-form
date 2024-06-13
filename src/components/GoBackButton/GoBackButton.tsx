@@ -13,6 +13,10 @@ const BackButton = styled.input.attrs<{ $text?: string }>((props) => ({
   padding: 15px 20px;
   margin: auto auto 20px 0;
   width: 25%;
+
+  @media only screen and (max-width: 768px) {
+    margin-left: 20px;
+  }
 `;
 
 export default function GoBackButton({

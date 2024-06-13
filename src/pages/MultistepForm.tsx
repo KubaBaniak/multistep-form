@@ -10,9 +10,14 @@ import FormFifthStep from "../components/FormSteps/FormFifthStep/FormFifthStep";
 import FormStepContext from "../components/FormSteps/FormStepContext";
 
 const Window = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
+  margin: 0;
   flex-direction: column;
   justify-content: center;
   align-items: center;

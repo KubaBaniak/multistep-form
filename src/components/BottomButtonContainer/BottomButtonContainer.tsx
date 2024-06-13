@@ -8,6 +8,18 @@ const ButtonContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: auto;
+
+  @media only screen and (max-width: 768px) {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+  }
 `;
 export default function BottomButtonsContainer({
   nextStep,

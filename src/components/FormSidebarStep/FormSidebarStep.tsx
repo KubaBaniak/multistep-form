@@ -7,6 +7,11 @@ const StepContainer = styled.div`
   align-items: center;
   color: hsl(0, 0%, 100%);
   gap: 20px;
+
+  @media only screen and (max-width: 768px) {
+    width: auto;
+    height: 50px;
+  }
 `;
 
 const StepNumber = styled.div<{ $currentStep: number; $stepNumber: number }>`
@@ -34,6 +39,10 @@ const StepDescriptionContainer = styled.div`
   align-items: flex-start;
   gap: 3px;
   flex-grow: 1;
+
+  @media only screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const StepName = styled.p`
