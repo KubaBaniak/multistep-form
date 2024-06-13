@@ -11,7 +11,8 @@ const StepContainer = styled.div`
 
 const StepNumber = styled.div<{ $currentStep: number; $stepNumber: number }>`
   ${({ $currentStep, $stepNumber }) =>
-    $currentStep === $stepNumber &&
+    ($currentStep === $stepNumber ||
+      ($currentStep >= 4 && $stepNumber === 4)) &&
     `
     color: hsl(213, 96%, 18%);
     background-color: hsl(206, 94%, 87%);

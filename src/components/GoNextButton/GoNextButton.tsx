@@ -1,4 +1,8 @@
 import styled from "styled-components";
+import { FormInputs } from "../../dto/form";
+import { useFormContext } from "react-hook-form";
+import { useContext } from "react";
+import FormStepContext from "../FormSteps/FormStepContext";
 
 const NextButton = styled.button`
   cursor: pointer;
@@ -10,6 +14,11 @@ const NextButton = styled.button`
   padding: 15px 20px;
   margin: auto 0 20px auto;
   width: auto;
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: hsl(213, 96%, 50%);
+  }
 `;
 
 export default function GoNextButton({
@@ -19,9 +28,18 @@ export default function GoNextButton({
   text: string;
   nextStep: () => void;
 }) {
-  return (
-    <>
-      <NextButton onClick={nextStep}>{text}</NextButton>
-    </>
-  );
+  const { trigger } = useFormContext<FormInputs>();
+  const context = useContext(FormStepContext);
+
+  const handleClick = async () => {
+    const result =
+      context?.formStep === 1
+        ? await trigger(["name", "email", "phoneNumber"])
+        : await trigger("plan");
+    if (result) {
+      nextStep();
+    }
+  };
+
+  return <NextButton onClick={handleClick}>{text}</NextButton>;
 }

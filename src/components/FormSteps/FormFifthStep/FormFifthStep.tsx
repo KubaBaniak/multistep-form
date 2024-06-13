@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import FormSidebar from "../../FormSidebar/FormSidebar";
-import BottomButtonsContainer from "../../BottomButtonContainer/BottomButtonContainer";
 import FormStepMedata from "../../FormStepMetadata/FormStepMetadata";
-import AddOnsContainer from "../../FormAddOnsContainer/FormAddOnsContainer";
+import ThankYouIcon from "./ThankYouIcon";
 
-const title = "Pick add-ons";
-const description = "Add-ons help enhance your gaming experience.";
+const title = "Thank you!";
+const description =
+  "Thanks for confirming your subscription! We hope you have fun using our platform. If you ever need suuport, please feel free to email us at support@loremgaming.com.";
 
 const Container = styled.div<{ $active: number }>`
-  display: ${({ $active }) => ($active === 3 ? "flex" : "none")};
+  display: ${({ $active }) => ($active === 5 ? "flex" : "none")};
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -29,27 +29,22 @@ const Content = styled.div`
   display: flex;
   margin: auto;
   flex-direction: column;
-  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 `;
 
-interface FormThirdStepProps {
-  nextStep: () => void;
-  prevStep: () => void;
+interface FormFifthStepProps {
   active: number;
 }
 
-export default function FormThirdStep({
-  nextStep,
-  prevStep,
-  active,
-}: FormThirdStepProps) {
+export default function FormFifthStep({ active }: FormFifthStepProps) {
   return (
     <Container $active={active}>
       <FormSidebar currentStep={active} />
       <Content>
+        <ThankYouIcon />
         <FormStepMedata title={title} description={description} />
-        <AddOnsContainer />
-        <BottomButtonsContainer nextStep={nextStep} prevStep={prevStep} />
       </Content>
     </Container>
   );

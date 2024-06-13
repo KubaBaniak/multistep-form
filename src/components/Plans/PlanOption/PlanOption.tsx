@@ -95,7 +95,9 @@ export default function PlanOption({
   return (
     <>
       <RadioInput
-        {...register("plan.planName", { required: true })}
+        {...register("plan.planName", {
+          required: "Please select your desired plan",
+        })}
         id={id}
         $planName={planName}
       />

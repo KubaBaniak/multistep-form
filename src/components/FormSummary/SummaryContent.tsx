@@ -22,11 +22,13 @@ export default function SummaryContent() {
 
   const getTotalPrice = () => {
     const totalAddOnsPrice = addOnsData
-      .map((addOn) => {
-        const numberString = addOn.addOnPrice.replace(/\D+/g, "");
-        return Number(numberString);
-      })
-      .reduce((sum, current) => sum + current);
+      ? addOnsData
+          .map((addOn) => {
+            const numberString = addOn.addOnPrice.replace(/\D+/g, "");
+            return Number(numberString);
+          })
+          .reduce((sum, current) => sum + current, 0)
+      : 0;
     const planPrice = Number(planData.planPrice.replace(/\D+/g, ""));
 
     return totalAddOnsPrice + planPrice;
@@ -36,9 +38,8 @@ export default function SummaryContent() {
     <>
       <SummaryContainer>
         <PlanSummary planData={planData} />
-        {addOnsData.map((addOn) => (
-          <AddOnSummary addOnData={addOn} />
-        ))}
+        {addOnsData &&
+          addOnsData.map((addOn) => <AddOnSummary addOnData={addOn} />)}
       </SummaryContainer>
       <SummaryTotal totalPrice={getTotalPrice()} />
     </>

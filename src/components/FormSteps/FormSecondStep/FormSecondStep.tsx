@@ -4,6 +4,9 @@ import PlansContainer from "../../Plans/PlansContainer/PlansContainer";
 import FormToggleButton from "../../FormToggleButton/FormToggleButton";
 import BottomButtonsContainer from "../../BottomButtonContainer/BottomButtonContainer";
 import FormStepMedata from "../../FormStepMetadata/FormStepMetadata";
+import { useFormContext } from "react-hook-form";
+import { FormInputs } from "../../../dto/form";
+import InputError from "../../ErrorComponents/InputError";
 
 const title = "Select your plan";
 const description = "You have the option of monthly or yearly billing.";
@@ -15,7 +18,7 @@ const Container = styled.div<{ $active: number }>`
   align-items: center;
   height: 70vh;
   width: 100%;
-  max-width: 900px;
+  max-width: 1200px;
   max-height: 600px;
   background-color: hsl(0, 0%, 100%);
   padding: 20px;
@@ -44,6 +47,10 @@ export default function FormSecondStep({
   prevStep,
   active,
 }: FormSecondStepProps) {
+  const { formState } = useFormContext<FormInputs>();
+
+  const inputError = formState.errors["plan"];
+
   return (
     <Container $active={active}>
       <FormSidebar currentStep={active} />
@@ -51,6 +58,9 @@ export default function FormSecondStep({
         <FormStepMedata title={title} description={description} />
         <PlansContainer />
         <FormToggleButton />
+        {inputError && inputError.planName && inputError.planName.message && (
+          <InputError errorMessage={inputError.planName.message} />
+        )}
         <BottomButtonsContainer nextStep={nextStep} prevStep={prevStep} />
       </Content>
     </Container>

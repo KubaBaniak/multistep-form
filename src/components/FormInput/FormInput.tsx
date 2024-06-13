@@ -1,6 +1,14 @@
 import { useFormContext } from "react-hook-form";
 import styled from "styled-components";
 import { FormInputs } from "../../dto/form";
+import InputError from "../ErrorComponents/InputError";
+
+const LabelWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
 
 const Label = styled.label`
   color: hsl(213, 96%, 18%);
@@ -13,6 +21,7 @@ const Input = styled.input`
   border: solid 1px hsl(231, 11%, 63%);
   font-size: 16px;
   width: 100%;
+  margin-bottom: 10px;
   box-sizing: border-box;
 `;
 
@@ -20,7 +29,7 @@ const InputGroup = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   gap: 8px;
 `;
 
@@ -35,12 +44,26 @@ export default function FormInput({
   placeholder,
   formRegisterValue,
 }: FormInputProps) {
-  const { register } = useFormContext<FormInputs>();
+  const { register, formState } = useFormContext<FormInputs>();
+
+  const inputError = formState.errors[formRegisterValue];
 
   return (
-    <InputGroup>
-      <Label>{labelName}</Label>
-      <Input {...register(formRegisterValue)} placeholder={placeholder} />
-    </InputGroup>
+    <>
+      <InputGroup>
+        <LabelWrapper>
+          <Label>{labelName}</Label>
+          {inputError && inputError.message && (
+            <InputError errorMessage={inputError.message} />
+          )}
+        </LabelWrapper>
+        <Input
+          {...register(formRegisterValue, {
+            required: "This field is required",
+          })}
+          placeholder={placeholder}
+        />
+      </InputGroup>
+    </>
   );
 }

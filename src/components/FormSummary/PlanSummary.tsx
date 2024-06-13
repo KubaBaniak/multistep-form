@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { Plan } from "../../dto/form";
+import { useContext } from "react";
+import FormStepContext from "../FormSteps/FormStepContext";
 
 const PlanSummaryContainer = styled.div`
   display: flex;
@@ -37,6 +39,7 @@ const PlanName = styled.p`
 
 const ChangePlanName = styled.p`
   margin: 0;
+  cursor: pointer;
   align-self: flex-start;
   display: inline-block;
   position: relative;
@@ -69,13 +72,15 @@ const PlanPrice = styled.p`
 `;
 
 export default function PlanSummary({ planData }: { planData: Plan }) {
+  const context = useContext(FormStepContext);
+
   return (
     <PlanSummaryContainer>
       <PlanNameContainer>
         <PlanName>
           {planData.planName} ({planData.billing})
         </PlanName>
-        <ChangePlanName>
+        <ChangePlanName onClick={() => context?.setFormStep(2)}>
           Chan<LetterWithoutBorder>g</LetterWithoutBorder>e
         </ChangePlanName>
       </PlanNameContainer>
