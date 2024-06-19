@@ -22,7 +22,7 @@ const Window = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: hsl(229, 24%, 87%);
+  background-color: hsl(231, 100%, 99%);
   box-sizing: border-box;
 `;
 
