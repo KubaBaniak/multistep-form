@@ -8,6 +8,9 @@ const description =
   "Thanks for confirming your subscription! We hope you have fun using our platform. If you ever need suuport, please feel free to email us at support@loremgaming.com.";
 
 const Container = styled.div<{ $active: number }>`
+  height: 100%;
+  max-height: 600px;
+  max-width: 800px;
   display: ${({ $active }) => ($active === 5 ? "flex" : "none")};
   flex-direction: row;
   justify-content: space-between;
@@ -18,6 +21,10 @@ const Container = styled.div<{ $active: number }>`
   border-radius: 20px;
   box-shadow: hsl(229, 24%, 87%) 0 8px 24px;
   gap: 20px;
+
+  @media only screen and (max-width: 768px) {
+    max-height: 450px;
+  }
 `;
 
 const Content = styled.div`

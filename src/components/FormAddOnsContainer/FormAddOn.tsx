@@ -37,15 +37,17 @@ const CheckboxWrapper = styled.label`
   font-size: 12px;
 `;
 
-const CheckboxContainer = styled.span`
+const CheckboxContainer = styled.span<{ $active?: boolean }>`
   position: absolute;
   top: 0;
   left: 0;
   width: 20px;
   height: 20px;
   border-radius: 5px;
-  background-color: transparent;
   border: 1px solid black;
+  transition: background-color 0.1s ease;
+  background-color: ${(props) =>
+    props.$active ? "hsl(243, 100%, 62%)" : "transparent"};
 
   &:after {
     content: "";
@@ -57,7 +59,6 @@ const CheckboxContainer = styled.span`
     border-bottom: 3px solid white;
     border-right: 3px solid white;
     transform: rotate(45deg);
-    display: none;
   }
 `;
 
@@ -65,14 +66,6 @@ const Checkbox = styled.input.attrs({
   type: "checkbox",
 })`
   visibility: hidden;
-
-  &:checked + ${CheckboxContainer} {
-    background-color: hsl(243, 100%, 62%);
-  }
-
-  &:checked + ${CheckboxContainer}:after {
-    display: block;
-  }
 `;
 
 const AddOnMetaData = styled.div`
@@ -113,7 +106,7 @@ export default function AddOn({
           id={"plan-" + title}
           onChange={handleCheckboxSelect}
         />
-        <CheckboxContainer />
+        <CheckboxContainer $active={active} />
       </CheckboxWrapper>
       <AddOnMetaData>
         <AddOnTitle>{title}</AddOnTitle>

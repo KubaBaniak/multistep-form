@@ -12,33 +12,41 @@ const title = "Select your plan";
 const description = "You have the option of monthly or yearly billing.";
 
 const Container = styled.div<{ $active: number }>`
+  height: 100%;
+  min-height: 600px;
+  min-width: 800px;
   display: ${({ $active }) => ($active === 2 ? "flex" : "none")};
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
   background-color: hsl(0, 0%, 100%);
   border-radius: 20px;
   box-shadow: hsl(229, 24%, 87%) 0 8px 24px;
+  padding: 15px;
+
+  @media only screen and (max-width: 768px) {
+    min-width: auto;
+    padding: 0;
+  }
 `;
 
 const Content = styled.div`
+  box-sizing: border-box;
+  width: 60%;
   height: 100%;
-  width: 50%;
   display: flex;
-  margin: auto;
+  margin: 0 auto;
   flex-direction: column;
   background: white;
   padding: 20px;
   border-radius: 10px;
-  gap: 0;
+  gap: 20px;
 
   @media only screen and (max-width: 768px) {
-    height: 100%;
+    width: 90%;
     position: relative;
     margin: 0;
     justify-content: flex-start;
-    gap: 5px;
     flex-grow: 1;
   }
 `;

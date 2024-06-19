@@ -9,35 +9,41 @@ const description =
   "Please provide your name, email address, and phone number.";
 
 const Container = styled.div<{ $active: number }>`
+  height: 100%;
+  min-height: 600px;
+  min-width: 800px;
   display: ${({ $active }) => ($active === 1 ? "flex" : "none")};
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 70vh;
-  width: 100%;
-  max-width: 1000px;
-  max-height: 600px;
   background-color: hsl(0, 0%, 100%);
   border-radius: 20px;
   box-shadow: hsl(229, 24%, 87%) 0 8px 24px;
+  padding: 15px;
+
+  @media only screen and (max-width: 768px) {
+    min-width: auto;
+    padding: 0;
+  }
 `;
 
 const Content = styled.div`
-  width: 50%;
+  box-sizing: border-box;
+  width: 60%;
+  height: 100%;
   display: flex;
   margin: auto;
   flex-direction: column;
   background: white;
   padding: 20px;
   border-radius: 10px;
-  gap: 0;
+  gap: 20px;
 
   @media only screen and (max-width: 768px) {
     width: 90%;
     position: relative;
     margin: 0;
     justify-content: flex-start;
-    gap: 5px;
     flex-grow: 1;
   }
 `;

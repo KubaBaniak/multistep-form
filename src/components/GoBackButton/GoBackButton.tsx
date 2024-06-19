@@ -8,10 +8,10 @@ const BackButton = styled.button`
   border: none;
   border-radius: 8px;
   padding: 15px 20px;
-  margin: auto;
   width: 25%;
 
   @media only screen and (max-width: 768px) {
+    margin: auto;
     margin-left: 20px;
   }
 `;

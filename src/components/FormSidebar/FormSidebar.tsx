@@ -5,7 +5,7 @@ import bgSidebar from "../../assets/images/bg-sidebar-desktop.svg";
 const SidebarContainer = styled.div`
   height: 100%;
   width: 35%;
-  min-width: 300px;
+  min-width: 250px;
   background-image: url(${bgSidebar});
   background-size: cover;
   background-position: bottom;
@@ -29,6 +29,7 @@ const SidebarContainer = styled.div`
     flex-direction: row;
     justify-content: center;
     background-position: 50% 80%;
+    z-index: -1;
   }
 `;
 export default function FormSidebar({ currentStep }: { currentStep: number }) {

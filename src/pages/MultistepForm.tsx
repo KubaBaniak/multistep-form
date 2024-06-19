@@ -22,6 +22,7 @@ const Window = styled.div`
   justify-content: center;
   align-items: center;
   background-color: hsl(229, 24%, 87%);
+  box-sizing: border-box;
 `;
 
 export default function MultistepForm() {
