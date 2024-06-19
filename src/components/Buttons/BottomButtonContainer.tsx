@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import GoBackButton from "../GoBackButton/GoBackButton";
-import FormSubmitButton from "../FormSubmitButton/FormSubmitButton";
-import GoNextButton from "../GoNextButton/GoNextButton";
+
+import GoBackButton from "./GoBackButton";
+import FormSubmitButton from "./FormSubmitButton";
+import GoNextButton from "./GoNextButton";
 
 const ButtonContainer = styled.div`
   display: flex;

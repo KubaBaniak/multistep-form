@@ -1,17 +1,17 @@
 import styled from "styled-components";
-import FormSidebar from "../../FormSidebar/FormSidebar";
-import BottomButtonsContainer from "../../BottomButtonContainer/BottomButtonContainer";
-import FormStepMedata from "../../FormStepMetadata/FormStepMetadata";
-import AddOnsContainer from "../../FormAddOnsContainer/FormAddOnsContainer";
+import FormSidebar from "../Sidebar/FormSidebar";
+import BottomButtonsContainer from "../Buttons/BottomButtonContainer";
+import FormStepMedata from "../StepMetadata/FormStepMetadata";
+import SummaryContent from "../Summary/SummaryContent";
 
-const title = "Pick add-ons";
-const description = "Add-ons help enhance your gaming experience.";
+const title = "Finishing up";
+const description = "Double-check everything looks OK before confirming.";
 
 const Container = styled.div<{ $active: number }>`
   height: 100%;
   min-height: 600px;
   min-width: 800px;
-  display: ${({ $active }) => ($active === 3 ? "flex" : "none")};
+  display: ${({ $active }) => ($active === 4 ? "flex" : "none")};
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -40,7 +40,7 @@ const Content = styled.div`
   gap: 20px;
 
   @media only screen and (max-width: 768px) {
-    height: 100%;
+    width: 90%;
     position: relative;
     margin: 0;
     justify-content: flex-start;
@@ -48,24 +48,28 @@ const Content = styled.div`
   }
 `;
 
-interface FormThirdStepProps {
+interface FormFourthStepProps {
   nextStep: () => void;
   prevStep: () => void;
   active: number;
 }
 
-export default function FormThirdStep({
+export default function FormFourthStep({
   nextStep,
   prevStep,
   active,
-}: FormThirdStepProps) {
+}: FormFourthStepProps) {
   return (
     <Container $active={active}>
       <FormSidebar currentStep={active} />
       <Content>
         <FormStepMedata title={title} description={description} />
-        <AddOnsContainer />
-        <BottomButtonsContainer nextStep={nextStep} prevStep={prevStep} />
+        {active === 4 && <SummaryContent />}
+        <BottomButtonsContainer
+          nextStepText="Confirm"
+          nextStep={nextStep}
+          prevStep={prevStep}
+        />
       </Content>
     </Container>
   );

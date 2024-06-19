@@ -1,12 +1,13 @@
 import styled from "styled-components";
-import FormSidebar from "../../FormSidebar/FormSidebar";
-import PlansContainer from "../../Plans/PlansContainer/PlansContainer";
-import FormToggleButton from "../../FormToggleButton/FormToggleButton";
-import BottomButtonsContainer from "../../BottomButtonContainer/BottomButtonContainer";
-import FormStepMedata from "../../FormStepMetadata/FormStepMetadata";
 import { useFormContext } from "react-hook-form";
-import { FormInputs } from "../../../dto/form";
-import InputError from "../../ErrorComponents/InputError";
+
+import FormSidebar from "../Sidebar/FormSidebar";
+import PlansContainer from "../Plans/PlansContainer/PlansContainer";
+import FormToggleButton from "../Buttons/FormToggleButton";
+import BottomButtonsContainer from "../Buttons/BottomButtonContainer";
+import FormStepMedata from "../StepMetadata/FormStepMetadata";
+import { FormInputs } from "../../dto/form";
+import InputError from "../Errors/InputError";
 
 const title = "Select your plan";
 const description = "You have the option of monthly or yearly billing.";

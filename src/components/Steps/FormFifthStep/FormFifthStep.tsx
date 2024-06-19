@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import FormSidebar from "../../FormSidebar/FormSidebar";
-import FormStepMedata from "../../FormStepMetadata/FormStepMetadata";
+import FormSidebar from "../../Sidebar/FormSidebar";
+import FormStepMedata from "../../StepMetadata/FormStepMetadata";
 import ThankYouIcon from "./ThankYouIcon";
 
 const title = "Thank you!";

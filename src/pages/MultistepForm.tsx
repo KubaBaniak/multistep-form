@@ -1,13 +1,14 @@
 import styled from "styled-components";
-import FormFirstStep from "../components/FormSteps/FormFirstStep/FormFirstStep";
-import FormSecondStep from "../components/FormSteps/FormSecondStep/FormSecondStep";
-import FormThirdStep from "../components/FormSteps/FormThirdStep/FormThirdStep";
-import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
-import { FormInputs } from "../dto/form";
 import { useState } from "react";
-import FormFourthStep from "../components/FormSteps/FormFourthStep/FormFourthStep";
-import FormFifthStep from "../components/FormSteps/FormFifthStep/FormFifthStep";
-import FormStepContext from "../components/FormSteps/FormStepContext";
+import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
+
+import FormFirstStep from "../components/Steps/FormFirstStep";
+import FormSecondStep from "../components/Steps/FormSecondStep";
+import FormThirdStep from "../components/Steps/FormThirdStep";
+import FormFourthStep from "../components/Steps/FormFourthStep";
+import FormFifthStep from "../components/Steps/FormFifthStep/FormFifthStep";
+import { FormInputs } from "../dto/form";
+import FormStepContext from "../components/Steps/FormStepContext";
 
 const Window = styled.div`
   position: absolute;

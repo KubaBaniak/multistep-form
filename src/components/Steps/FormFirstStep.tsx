@@ -1,21 +1,21 @@
 import styled from "styled-components";
-import FormSidebar from "../../FormSidebar/FormSidebar";
-import BottomButtonsContainer from "../../BottomButtonContainer/BottomButtonContainer";
-import FormStepMedata from "../../FormStepMetadata/FormStepMetadata";
-import SummaryContent from "../../FormSummary/SummaryContent";
+import FormInput from "../Inputs/FormInput";
+import FormSidebar from "../Sidebar/FormSidebar";
+import BottomButtonsContainer from "../Buttons/BottomButtonContainer";
+import FormStepMedata from "../StepMetadata/FormStepMetadata";
 
-const title = "Finishing up";
-const description = "Double-check everything looks OK before confirming.";
+const title = "Personal info";
+const description =
+  "Please provide your name, email address, and phone number.";
 
 const Container = styled.div<{ $active: number }>`
   height: 100%;
   min-height: 600px;
   min-width: 800px;
-  display: ${({ $active }) => ($active === 4 ? "flex" : "none")};
+  display: ${({ $active }) => ($active === 1 ? "flex" : "none")};
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
   background-color: hsl(0, 0%, 100%);
   border-radius: 20px;
   box-shadow: hsl(229, 24%, 87%) 0 8px 24px;
@@ -48,28 +48,36 @@ const Content = styled.div`
   }
 `;
 
-interface FormFourthStepProps {
+interface FormFirstStepProps {
   nextStep: () => void;
-  prevStep: () => void;
   active: number;
 }
 
-export default function FormFourthStep({
+export default function FormFirstStep({
   nextStep,
-  prevStep,
   active,
-}: FormFourthStepProps) {
+}: FormFirstStepProps) {
   return (
     <Container $active={active}>
       <FormSidebar currentStep={active} />
       <Content>
         <FormStepMedata title={title} description={description} />
-        {active === 4 && <SummaryContent />}
-        <BottomButtonsContainer
-          nextStepText="Confirm"
-          nextStep={nextStep}
-          prevStep={prevStep}
+        <FormInput
+          formRegisterValue={"name"}
+          labelName="Name"
+          placeholder="e.g. Stephen King"
         />
+        <FormInput
+          formRegisterValue={"email"}
+          labelName="Email Address"
+          placeholder="e.g. stephenking@lorem.com"
+        />
+        <FormInput
+          formRegisterValue={"phoneNumber"}
+          labelName="Phone Number"
+          placeholder="e.g. +1 234 567 890"
+        />
+        <BottomButtonsContainer nextStep={nextStep} />
       </Content>
     </Container>
   );

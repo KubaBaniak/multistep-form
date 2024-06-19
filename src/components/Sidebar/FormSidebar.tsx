@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import FormSidebarStep from "../FormSidebarStep/FormSidebarStep";
+import FormSidebarStep from "./FormSidebarStep";
 import bgSidebar from "../../assets/images/bg-sidebar-desktop.svg";
 
 const SidebarContainer = styled.div`

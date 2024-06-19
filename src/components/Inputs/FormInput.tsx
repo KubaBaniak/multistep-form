@@ -1,7 +1,7 @@
 import { useFormContext } from "react-hook-form";
 import styled from "styled-components";
 import { FormInputs } from "../../dto/form";
-import InputError from "../ErrorComponents/InputError";
+import InputError from "../Errors/InputError";
 
 const LabelWrapper = styled.div`
   width: 100%;

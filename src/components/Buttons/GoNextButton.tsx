@@ -2,7 +2,8 @@ import styled from "styled-components";
 import { FormInputs } from "../../dto/form";
 import { useFormContext } from "react-hook-form";
 import { useContext } from "react";
-import FormStepContext from "../FormSteps/FormStepContext";
+
+import FormStepContext from "../Steps/FormStepContext";
 
 const NextButton = styled.button`
   cursor: pointer;

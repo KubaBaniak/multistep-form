@@ -1,21 +1,22 @@
 import styled from "styled-components";
-import FormInput from "../../FormInput/FormInput";
-import FormSidebar from "../../FormSidebar/FormSidebar";
-import BottomButtonsContainer from "../../BottomButtonContainer/BottomButtonContainer";
-import FormStepMedata from "../../FormStepMetadata/FormStepMetadata";
 
-const title = "Personal info";
-const description =
-  "Please provide your name, email address, and phone number.";
+import FormSidebar from "../Sidebar/FormSidebar";
+import BottomButtonsContainer from "../Buttons/BottomButtonContainer";
+import FormStepMedata from "../StepMetadata/FormStepMetadata";
+import AddOnsContainer from "../AddOns/FormAddOnsContainer";
+
+const title = "Pick add-ons";
+const description = "Add-ons help enhance your gaming experience.";
 
 const Container = styled.div<{ $active: number }>`
   height: 100%;
   min-height: 600px;
   min-width: 800px;
-  display: ${({ $active }) => ($active === 1 ? "flex" : "none")};
+  display: ${({ $active }) => ($active === 3 ? "flex" : "none")};
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
   background-color: hsl(0, 0%, 100%);
   border-radius: 20px;
   box-shadow: hsl(229, 24%, 87%) 0 8px 24px;
@@ -40,7 +41,7 @@ const Content = styled.div`
   gap: 20px;
 
   @media only screen and (max-width: 768px) {
-    width: 90%;
+    height: 100%;
     position: relative;
     margin: 0;
     justify-content: flex-start;
@@ -48,36 +49,24 @@ const Content = styled.div`
   }
 `;
 
-interface FormFirstStepProps {
+interface FormThirdStepProps {
   nextStep: () => void;
+  prevStep: () => void;
   active: number;
 }
 
-export default function FormFirstStep({
+export default function FormThirdStep({
   nextStep,
+  prevStep,
   active,
-}: FormFirstStepProps) {
+}: FormThirdStepProps) {
   return (
     <Container $active={active}>
       <FormSidebar currentStep={active} />
       <Content>
         <FormStepMedata title={title} description={description} />
-        <FormInput
-          formRegisterValue={"name"}
-          labelName="Name"
-          placeholder="e.g. Stephen King"
-        />
-        <FormInput
-          formRegisterValue={"email"}
-          labelName="Email Address"
-          placeholder="e.g. stephenking@lorem.com"
-        />
-        <FormInput
-          formRegisterValue={"phoneNumber"}
-          labelName="Phone Number"
-          placeholder="e.g. +1 234 567 890"
-        />
-        <BottomButtonsContainer nextStep={nextStep} />
+        <AddOnsContainer />
+        <BottomButtonsContainer nextStep={nextStep} prevStep={prevStep} />
       </Content>
     </Container>
   );

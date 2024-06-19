@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Plan } from "../../dto/form";
 import { useContext } from "react";
-import FormStepContext from "../FormSteps/FormStepContext";
+import FormStepContext from "../Steps/FormStepContext";
 
 const PlanSummaryContainer = styled.div`
   display: flex;
