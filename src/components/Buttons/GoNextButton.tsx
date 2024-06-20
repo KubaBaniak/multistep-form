@@ -9,12 +9,18 @@ const NextButton = styled.button`
   cursor: pointer;
   font-size: 16px;
   color: hsl(0, 0%, 100%);
-  background-color: hsl(213, 96%, 18%);
+  background-color: hsl(243, 100%, 62%);
   border: none;
   border-radius: 8px;
   padding: 15px 20px;
   margin: 10px 0 0 auto;
   width: auto;
+
+  transition: all 0.1s ease;
+
+  &:hover {
+    filter: brightness(150%);
+  }
 
   &:disabled {
     cursor: not-allowed;

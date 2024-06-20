@@ -11,8 +11,7 @@ const BackButton = styled.button`
   width: 25%;
 
   @media only screen and (max-width: 768px) {
-    margin: auto;
-    margin-left: 20px;
+    width: 20%;
   }
 `;
 
