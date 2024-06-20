@@ -22,10 +22,18 @@ const PlanList = styled.ul`
   padding: 0;
   display: flex;
   justify-content: space-between;
+
+  @media only screen and (max-width: 768px) {
+    flex-direction: column;
+    gap: 10px;
+  }
 `;
 
 const PlanElement = styled.li`
   width: 31%;
+  @media only screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export default function PlansContainer() {

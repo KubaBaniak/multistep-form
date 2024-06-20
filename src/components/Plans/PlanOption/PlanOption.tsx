@@ -26,6 +26,10 @@ const Label = styled.label`
   &:hover {
     border: solid 1px hsl(213, 96%, 18%);
   }
+
+  @media only screen and (max-width: 768px) {
+    height: 100px;
+  }
 `;
 
 const RadioInput = styled.input.attrs<{ $planName: string }>((props) => ({
@@ -37,7 +41,7 @@ const RadioInput = styled.input.attrs<{ $planName: string }>((props) => ({
 
   &:checked + ${Label} {
     background: hsl(217, 100%, 97%);
-    border: solid 1px hsl(213, 96%, 18%);
+    border: solid 1px hsl(243, 100%, 62%);
   }
 `;
 
@@ -45,6 +49,11 @@ const RadioContent = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
+  @media only screen and (max-width: 768px) {
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+  }
 `;
 
 const RadioContentIcon = styled.img.attrs<{ $planicon: string }>((props) => ({
@@ -61,6 +70,9 @@ const RadioContentData = styled.div`
   flex-direction: column;
   justify-content: center;
   gap: 5px;
+  @media only screen and (max-width: 768px) {
+    margin-top: 0;
+  }
 `;
 
 const RadioContentDataTitle = styled.h2`
