@@ -2,12 +2,10 @@ import { useEffect } from "react";
 import styled from "styled-components";
 import { FormInputs } from "../../../dto/form";
 import { useFormContext } from "react-hook-form";
+import { IPlanFullContent } from "../plans";
 
 interface PlanOptionProps {
-  planIcon: string;
-  planName: "Arcade" | "Advanced" | "Pro";
-  price: string;
-  additionalInfo?: string;
+  plan: IPlanFullContent;
 }
 
 const Label = styled.label`
@@ -85,24 +83,22 @@ const RadioContentDataPrice = styled.span`
   color: hsl(231, 11%, 63%);
 `;
 
-const RadioContentDataAdditionalInfo = styled.span``;
+const RadioContentDataAdditionalInfo = styled.span`
+  color: hsl(213, 96%, 18%);
+  font-size: 14px;
+`;
 
-export default function PlanOption({
-  planIcon,
-  planName,
-  price,
-  additionalInfo,
-}: PlanOptionProps) {
-  const id = `plan-${planName.replace(/\s+/g, "-").toLowerCase()}`;
+export default function PlanOption({ plan }: PlanOptionProps) {
+  const id = `plan-${plan.planName.replace(/\s+/g, "-").toLowerCase()}`;
   const { register, setValue, watch } = useFormContext<FormInputs>();
 
   const selectedPlanName = watch("plan.planName");
 
   useEffect(() => {
-    if (selectedPlanName === planName) {
-      setValue("plan.planPrice", price);
+    if (selectedPlanName === plan.planName) {
+      setValue("plan.planPrice", plan.price);
     }
-  }, [selectedPlanName, planName, price, setValue]);
+  }, [selectedPlanName, plan.planName, plan.price, setValue]);
 
   return (
     <>
@@ -111,17 +107,17 @@ export default function PlanOption({
           required: "Please select your desired plan",
         })}
         id={id}
-        $planName={planName}
+        $planName={plan.planName}
       />
       <Label htmlFor={id}>
         <RadioContent>
-          <RadioContentIcon $planicon={planIcon} />
+          <RadioContentIcon $planicon={plan.planIcon} />
           <RadioContentData>
-            <RadioContentDataTitle>{planName}</RadioContentDataTitle>
-            <RadioContentDataPrice>{price}</RadioContentDataPrice>
-            {additionalInfo && (
+            <RadioContentDataTitle>{plan.planName}</RadioContentDataTitle>
+            <RadioContentDataPrice>{plan.price}</RadioContentDataPrice>
+            {plan.additionalText && (
               <RadioContentDataAdditionalInfo>
-                {additionalInfo}
+                {plan.additionalText}
               </RadioContentDataAdditionalInfo>
             )}
           </RadioContentData>

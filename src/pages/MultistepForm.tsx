@@ -9,7 +9,7 @@ import FormFourthStep from "../components/Steps/FormFourthStep";
 import FormFifthStep from "../components/Steps/FormFifthStep/FormFifthStep";
 import { FormInputs } from "../dto/form";
 import FormStepContext from "../components/Steps/FormStepContext";
-import { plansData } from "../components/Plans/plans";
+import { plansData, plansDataMonthly } from "../components/Plans/plans";
 
 const Window = styled.div`
   position: absolute;
@@ -30,7 +30,7 @@ const Window = styled.div`
 export default function MultistepForm() {
   const methods = useForm<FormInputs>({
     defaultValues: {
-      plan: plansData.arcade,
+      plan: plansDataMonthly.arcade,
     },
   });
 

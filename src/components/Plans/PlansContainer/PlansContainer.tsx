@@ -3,19 +3,15 @@ import PlanOption from "../PlanOption/PlanOption";
 import arcadeIcon from "../../../../public/assets/images/icon-arcade.svg";
 import advancedIcon from "../../../../public/assets/images/icon-advanced.svg";
 import proIcon from "../../../../public/assets/images/icon-pro.svg";
-import { plansData } from "../plans";
-
-type PlanContent = {
-  planIcon: string;
-  planName: "Arcade" | "Advanced" | "Pro";
-  price: string;
-};
-
-const plans: PlanContent[] = [
-  { planIcon: arcadeIcon, ...plansData.arcade },
-  { planIcon: advancedIcon, ...plansData.advanced },
-  { planIcon: proIcon, ...plansData.pro },
-];
+import {
+  IPlanFullContent,
+  IPlans,
+  plansDataMonthly,
+  plansDataYearly,
+} from "../plans";
+import { useFormContext } from "react-hook-form";
+import { FormInputs } from "../../../dto/form";
+import { useEffect, useState } from "react";
 
 const PlanList = styled.ul`
   list-style: none;
@@ -37,15 +33,30 @@ const PlanElement = styled.li`
 `;
 
 export default function PlansContainer() {
+  const { getValues, watch } = useFormContext<FormInputs>();
+  const [plansData, setPlansData] = useState<IPlans>(plansDataMonthly);
+
+  const billing = watch("plan.billing");
+
+  useEffect(() => {
+    const plans =
+      getValues("plan").billing === "monthly"
+        ? plansDataMonthly
+        : plansDataYearly;
+    setPlansData(plans);
+  }, [billing, getValues]);
+
+  const plans: IPlanFullContent[] = [
+    { planIcon: arcadeIcon, ...plansData.arcade },
+    { planIcon: advancedIcon, ...plansData.advanced },
+    { planIcon: proIcon, ...plansData.pro },
+  ];
+
   return (
     <PlanList>
       {plans.map((plan) => (
         <PlanElement key={"key-" + plan.planName}>
-          <PlanOption
-            planIcon={plan.planIcon}
-            planName={plan.planName}
-            price={plan.price}
-          />
+          <PlanOption plan={plan} />
         </PlanElement>
       ))}
     </PlanList>
