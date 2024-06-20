@@ -2,7 +2,7 @@ import styled from "styled-components";
 import FormStepDescription from "./FormStepDescription/FormStepDescription";
 import FormStepTitle from "./FormStepTitle/FormStepTitle";
 
-const MetadataCotnainer = styled.div`
+const MetadataContainer = styled.div`
   display: flex;
   flex-direction: column;
 `;
@@ -15,9 +15,9 @@ export default function FormStepMedata({
   description: string;
 }) {
   return (
-    <MetadataCotnainer>
+    <MetadataContainer>
       <FormStepTitle title={title} />
       <FormStepDescription description={description} />
-    </MetadataCotnainer>
+    </MetadataContainer>
   );
 }
