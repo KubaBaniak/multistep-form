@@ -21,10 +21,16 @@ const SubmitButton = styled.input.attrs<{ $text?: string }>((props) => ({
   }
 `;
 
-export default function FormSubmitButton({ text }: { text?: string }) {
+export default function FormSubmitButton({
+  text,
+  nextStep,
+}: {
+  text?: string;
+  nextStep: () => void;
+}) {
   return (
     <>
-      <SubmitButton $text={text} />
+      <SubmitButton $text={text} onClick={nextStep} />
     </>
   );
 }

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import ThankYouSvg from "../../../assets/images/icon-thank-you.svg";
+import ThankYouSvg from "../../../../public/assets/images/icon-thank-you.svg";
 
 const Icon = styled.img.attrs({
   src: ThankYouSvg,

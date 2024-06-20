@@ -36,11 +36,12 @@ export default function BottomButtonsContainer({
   return (
     <ButtonContainer>
       {prevStep && <GoBackButton text="Go Back" prevStep={prevStep} />}
-      {nextStep && nextStepText !== "Confirm" ? (
-        <GoNextButton text={buttonText} nextStep={nextStep} />
-      ) : (
-        <FormSubmitButton text={buttonText} />
-      )}
+      {nextStep &&
+        (nextStepText !== "Confirm" ? (
+          <GoNextButton text={buttonText} nextStep={nextStep} />
+        ) : (
+          <FormSubmitButton text={buttonText} nextStep={nextStep} />
+        ))}
     </ButtonContainer>
   );
 }

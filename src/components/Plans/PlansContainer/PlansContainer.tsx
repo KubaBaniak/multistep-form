@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import PlanOption from "../PlanOption/PlanOption";
-import arcadeIcon from "../../../assets/images/icon-arcade.svg";
-import advancedIcon from "../../../assets/images/icon-advanced.svg";
-import proIcon from "../../../assets/images/icon-pro.svg";
+import arcadeIcon from "../../../../public/assets/images/icon-arcade.svg";
+import advancedIcon from "../../../../public/assets/images/icon-advanced.svg";
+import proIcon from "../../../../public/assets/images/icon-pro.svg";
 import { plansData } from "../plans";
 
 type PlanContent = {

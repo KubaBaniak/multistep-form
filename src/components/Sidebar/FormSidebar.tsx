@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import FormSidebarStep from "./FormSidebarStep";
-import bgSidebar from "../../assets/images/bg-sidebar-desktop.svg";
+import bgSidebar from "../../../public/assets/images/bg-sidebar-desktop.svg";
 
 const SidebarContainer = styled.div`
   height: 100%;
