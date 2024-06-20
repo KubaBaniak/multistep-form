@@ -37,7 +37,7 @@ export default function SummaryContent() {
   return (
     <>
       <SummaryContainer>
-        <PlanSummary planData={planData} />
+        <PlanSummary planData={planData} hasAddOns={addOnsData.length !== 0} />
         {addOnsData &&
           addOnsData.map((addOn) => <AddOnSummary addOnData={addOn} />)}
       </SummaryContainer>

@@ -3,12 +3,15 @@ import { Plan } from "../../dto/form";
 import { useContext } from "react";
 import FormStepContext from "../Steps/FormStepContext";
 
-const PlanSummaryContainer = styled.div`
+const PlanSummaryContainer = styled.div<{ $hasAddOns: boolean }>`
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: relative;
   z-index: 3;
+  ${(props) => {
+    if (props.$hasAddOns) {
+      return `
   margin-bottom: 30px;
   &::before {
     content: "";
@@ -21,6 +24,9 @@ const PlanSummaryContainer = styled.div`
     left: 0;
     z-index: -1;
   }
+`;
+    }
+  }}
 `;
 
 const PlanNameContainer = styled.div`
@@ -55,11 +61,17 @@ const PlanPrice = styled.p`
   font-weight: bold;
 `;
 
-export default function PlanSummary({ planData }: { planData: Plan }) {
+export default function PlanSummary({
+  planData,
+  hasAddOns,
+}: {
+  planData: Plan;
+  hasAddOns: boolean;
+}) {
   const context = useContext(FormStepContext);
 
   return (
-    <PlanSummaryContainer>
+    <PlanSummaryContainer $hasAddOns={hasAddOns}>
       <PlanNameContainer>
         <PlanName>
           {planData.planName} ({planData.billing})

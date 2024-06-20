@@ -19,7 +19,7 @@ const Container = styled.div<{ $active: number }>`
   background-color: hsl(0, 0%, 100%);
   padding: 20px;
   border-radius: 20px;
-  box-shadow: hsl(229, 24%, 87%) 0 8px 24px;
+  box-shadow: hsl(229, 24%, 87%) 10px 8px 24px;
   gap: 20px;
 
   @media only screen and (max-width: 768px) {
