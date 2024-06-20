@@ -19,6 +19,7 @@ export default function SummaryContent() {
 
   const planData = getValues("plan");
   const addOnsData = getValues("addOns");
+  console.log(addOnsData);
 
   const getTotalPrice = () => {
     const totalAddOnsPrice = addOnsData

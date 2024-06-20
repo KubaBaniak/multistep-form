@@ -1,4 +1,6 @@
+import { useFormContext } from "react-hook-form";
 import styled from "styled-components";
+import { FormInputs } from "../../dto/form";
 
 const SummaryTotalContainer = styled.div`
   align-self: center;
@@ -19,10 +21,14 @@ const SummaryTotalPrice = styled.p`
 `;
 
 export default function SummaryTotal({ totalPrice }: { totalPrice: number }) {
+  const { watch } = useFormContext<FormInputs>();
+
+  const priceSuffix = watch("plan.billing") === "monthly" ? "mo" : "yr";
+
   return (
     <SummaryTotalContainer>
       <SummaryTotalText>Total (per month)</SummaryTotalText>
-      <SummaryTotalPrice>{`+${totalPrice}/mo`}</SummaryTotalPrice>
+      <SummaryTotalPrice>{`+${totalPrice}/${priceSuffix}`}</SummaryTotalPrice>
     </SummaryTotalContainer>
   );
 }

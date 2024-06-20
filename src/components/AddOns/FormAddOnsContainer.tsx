@@ -28,7 +28,15 @@ export default function AddOnsContainer() {
   useEffect(() => {
     const addOns = getCorrectAddOns();
     setAddOns(addOns);
-  }, [billing, getCorrectAddOns]);
+    const updatedAddOns = selectedAddOns.map((index) => {
+      const addOn = addOns[index];
+      return {
+        addOnName: addOn.title,
+        addOnPrice: addOn.price,
+      };
+    });
+    setValue("addOns", updatedAddOns);
+  }, [billing, getCorrectAddOns, setValue, selectedAddOns]);
 
   const handleCheckboxSelect = (item: number) => {
     setSelectedAddOns((prevState) => {
