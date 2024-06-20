@@ -3,6 +3,7 @@ import PlanOption from "../PlanOption/PlanOption";
 import arcadeIcon from "../../../assets/images/icon-arcade.svg";
 import advancedIcon from "../../../assets/images/icon-advanced.svg";
 import proIcon from "../../../assets/images/icon-pro.svg";
+import { plansData } from "../plans";
 
 type PlanContent = {
   planIcon: string;
@@ -11,9 +12,9 @@ type PlanContent = {
 };
 
 const plans: PlanContent[] = [
-  { planIcon: arcadeIcon, planName: "Arcade", price: "$90/mo" },
-  { planIcon: advancedIcon, planName: "Advanced", price: "$120/mo" },
-  { planIcon: proIcon, planName: "Pro", price: "$150/mo" },
+  { planIcon: arcadeIcon, ...plansData.arcade },
+  { planIcon: advancedIcon, ...plansData.advanced },
+  { planIcon: proIcon, ...plansData.pro },
 ];
 
 const PlanList = styled.ul`
