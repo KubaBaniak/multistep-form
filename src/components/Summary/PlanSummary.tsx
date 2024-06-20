@@ -40,29 +40,13 @@ const PlanName = styled.p`
 const ChangePlanName = styled.p`
   margin: 0;
   cursor: pointer;
+  text-decoration: underline;
   align-self: flex-start;
   display: inline-block;
   position: relative;
   font-size: 14px;
   z-index: 3;
   color: hsl(231, 11%, 63%);
-  &::before {
-    content: "";
-    display: block;
-    height: 2px;
-    width: 100%;
-    background-color: hsl(231, 11%, 63%);
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    z-index: -1;
-  }
-`;
-
-const LetterWithoutBorder = styled.span`
-  z-index: 42;
-  background: hsl(217, 100%, 97%);
-  display: inline-block;
 `;
 
 const PlanPrice = styled.p`
@@ -81,7 +65,7 @@ export default function PlanSummary({ planData }: { planData: Plan }) {
           {planData.planName} ({planData.billing})
         </PlanName>
         <ChangePlanName onClick={() => context?.setFormStep(2)}>
-          Chan<LetterWithoutBorder>g</LetterWithoutBorder>e
+          Change
         </ChangePlanName>
       </PlanNameContainer>
       <PlanPrice>{planData.planPrice}</PlanPrice>
