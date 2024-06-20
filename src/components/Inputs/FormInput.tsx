@@ -23,6 +23,11 @@ const Input = styled.input`
   width: 100%;
   margin-bottom: 10px;
   box-sizing: border-box;
+
+  &:focus {
+    outline: none;
+    border: solid 1px hsl(243, 100%, 62%);
+  }
 `;
 
 const InputGroup = styled.div`
