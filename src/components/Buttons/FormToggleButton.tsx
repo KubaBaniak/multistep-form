@@ -15,8 +15,8 @@ const Label = styled.label`
 `;
 
 const Switch = styled.div`
-  width: 60px;
-  height: 24px;
+  width: 50px;
+  height: 20px;
   background: hsl(213, 96%, 18%);
   border-radius: 32px;
   position: relative;
@@ -26,8 +26,8 @@ const Switch = styled.div`
     transition: 300ms all;
     content: "";
     position: absolute;
-    width: 24px;
-    height: 24px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
     top: 50%;
     left: 4px;
@@ -45,7 +45,7 @@ const HiddenInput = styled.input.attrs({
   display: none;
   &:checked + ${Switch} {
     &:before {
-      transform: translate(36px, -50%);
+      transform: translate(32px, -50%);
     }
   }
 `;
