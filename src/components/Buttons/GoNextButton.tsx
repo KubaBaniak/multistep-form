@@ -9,7 +9,7 @@ const NextButton = styled.button`
   cursor: pointer;
   font-size: 16px;
   color: hsl(0, 0%, 100%);
-  background-color: hsl(243, 100%, 62%);
+  background-color: hsl(213, 96%, 18%);
   border: none;
   border-radius: 8px;
   padding: 15px 20px;
