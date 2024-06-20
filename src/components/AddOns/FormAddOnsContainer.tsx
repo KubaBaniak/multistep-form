@@ -1,26 +1,9 @@
 import styled from "styled-components";
 import AddOn from "./FormAddOn";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
 import { FormInputs } from "../../dto/form";
-
-const addOns = [
-  {
-    title: "Online service",
-    description: "Access to multiplayer games",
-    price: "+1$/mo",
-  },
-  {
-    title: "Larger storage",
-    description: "Extra 1TB of cloud save",
-    price: "+2$/mo",
-  },
-  {
-    title: "Customizable profile",
-    description: "Custom theme on your profile",
-    price: "+2$/mo",
-  },
-];
+import { addOnsMonthly, addOnsYearly } from "./addOns";
 
 const AddOnsSection = styled.ul`
   list-style: none;
@@ -31,9 +14,21 @@ const AddOnsSection = styled.ul`
 `;
 
 export default function AddOnsContainer() {
-  const [selectedAddOns, setSelectedAddOns] = useState<number[]>([]);
+  const { register, setValue, watch } = useFormContext<FormInputs>();
 
-  const { register, setValue } = useFormContext<FormInputs>();
+  const billing = watch("plan.billing");
+  const getCorrectAddOns = useCallback(
+    () => (billing === "monthly" ? addOnsMonthly : addOnsYearly),
+    [billing],
+  );
+
+  const [selectedAddOns, setSelectedAddOns] = useState<number[]>([]);
+  const [addOns, setAddOns] = useState(getCorrectAddOns());
+
+  useEffect(() => {
+    const addOns = getCorrectAddOns();
+    setAddOns(addOns);
+  }, [billing, getCorrectAddOns]);
 
   const handleCheckboxSelect = (item: number) => {
     setSelectedAddOns((prevState) => {
